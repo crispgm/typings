@@ -1,0 +1,14 @@
+/* GMK Shoko https://geekhack.org/index.php?topic=98202.0 */
+:root {
+  --main-bg-color: #99d6ea;
+  --text-color: #7a99ac;
+  --input-color: #7a99ac;
+  --input-prepare-color: #99d6ea;
+  --input-correct-color: #99eaa7;
+  --input-wrong-color: #ea99a7;
+  --input-bg-color: #ffffff;
+  --choose-color: #7a99ac;
+  --meter-color: #7a99ac;
+  --button-color: #ffffff;
+  --button-bg-color: #7a99ac;
+}

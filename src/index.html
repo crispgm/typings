@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<head>
+    <title>typings</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div class="wrapper">
+            <div class="title">
+                typings (beta)
+            </div>
+            <div class="main">
+                <div class="text-meter">WPM: {{ wpm }} ACC: {{ acc }}</div>
+                <div class="text-choose">10 / 30 / 50 / 100 / 200</div>
+                <div class="text-input" v-html="renderedText"></div>
+            </div>
+            <div class="typing">
+                <input type="text" class="text-typing" v-model="curTyping" />
+                <button class="text-redo">Redo</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            originalText: 'right world who he on by course without around both so need he just man real end so even these such they may between we in it seem line of back might first to stand become like same little eye way on both by go not early other without feel',
+            renderedText: '',
+            richTexts: [],
+            wpm: 'xxx',
+            acc: 'xxx',
+            curTyping: '',
+            curIndex: 0,
+            curError: false,
+            typingCorrectCount: 0,
+            typingCount: 0,
+            typingStart: null,
+            typingEnd: null,
+            finished: false
+        },
+        watch: {
+            curTyping: function(val, oldVal) {
+                if (this.finished) {
+                    return
+                }
+                if (this.typingStart == null) {
+                    this.typingStart = Date.now();
+                }
+                const curChar = val[val.length-1];
+                const curWord = this.richTexts[this.curIndex].text;
+                if (this.isPunctuation(curChar)) {
+                    if (curWord == this.curTyping.substr(0, this.curTyping.length-1)) {
+                        this.typingCorrectCount++;
+                        this.richTexts[this.curIndex].klass = 'typing-text-correct';
+                    } else {
+                        this.richTexts[this.curIndex].klass = 'typing-text-wrong';
+                    }
+                    this.typingCount++;
+                    this.acc = (this.typingCorrectCount/this.typingCount*100).toFixed(0);
+                    this.wpm = (this.typingCount/((Date.now()-this.typingStart)/1000)*60).toFixed(0);
+                    if (this.curIndex < this.richTexts.length-1) {
+                        this.richTexts[this.curIndex+1].klass = 'typing-text-prepare';
+                    } else {
+                        this.finished = true;
+                    }
+
+                    this.curIndex++;
+                    this.curTyping = '';
+
+                    this.render()
+                } else {
+                    if (curWord.indexOf(this.curTyping) == -1) {
+                        this.curError = true;
+                        console.log('error');
+                    }
+                }
+            }
+        },
+        created: function() {
+            const texts = this.originalText.split(' ');
+            for (const [index, text] of Object.entries(texts)) {
+                let klass = 'typing-text-normal';
+                if (index == 0) {
+                    klass = 'typing-text-prepare';
+                }
+                this.richTexts.push({
+                    text,
+                    klass
+                });
+            }
+            this.init();
+        },
+        methods: {
+            init: function() {
+                this.wpm = 'xxx';
+                this.acc = 'xxx';
+                this.curTyping = '';
+                this.curIndex = 0;
+                this.typingCorrectCount = 0;
+                this.typingCount = 0;
+                this.typingStart = null;
+                this.typingEnd = null;
+                this.render();
+            },
+            render: function() {
+                let html = '';
+                for (const rt of this.richTexts) {
+                    html += `<span class="${rt.klass}">${rt.text}</span> `;
+                }
+                this.renderedText = html;
+            },
+            isPunctuation: function(c) {
+                switch (c) {
+                case ' ':
+                    return true;
+                default:
+                    return false;
+                }
+            }
+        }
+    })
+</script>
+
+</html>

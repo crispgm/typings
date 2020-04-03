@@ -1,0 +1,123 @@
+/* @import url("/themes/gmk-shoko.css"); */
+@import url("/themes/nord.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 40rem) {
+  html {
+    font-size: 14px;
+  }
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-family: "Fira Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0;
+  width: 36rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+
+.main {
+  width: 100%;
+  margin: 1rem 1rem 1rem 0;
+  text-align: left;
+  padding: 0.4rem;
+}
+
+.text-input {
+  color: var(--text-color);
+  background-color: var(--input-bg-color);
+  font-size: 1rem;
+  border-radius: 8px;
+  margin: 0.4rem 0 0;
+  padding: 1.2rem 1rem;
+  word-spacing: 0.4rem;
+}
+
+.text-choose {
+  color: var(--choose-color);
+}
+
+.text-meter {
+  color: var(--meter-color);
+  float: right;
+}
+
+.text-typing {
+  color: var(--input-color);
+  background-color: var(--input-bg-color);
+  border: 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: "Fira Sans";
+  line-height: 1rem;
+  margin: 0 0.2rem 0 0;
+  padding: 0.4rem 0.8rem;
+  width: 20rem;
+}
+
+.text-redo {
+  color: var(--button-color);
+  background-color: var(--button-bg-color);
+  border: 0;
+  border-radius: 6px;
+  font-family: "Fira Sans";
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 0.4rem;
+}
+
+.typing-text-normal {
+  color: var(--input-color);
+}
+
+.typing-text-prepare {
+  color: var(--input-prepare-color);
+}
+
+.typing-text-highlight {
+  color: var(--input-highlight-color);
+}
+
+.typing-text-correct {
+  color: var(--input-correct-color);
+}
+
+.typing-text-wrong {
+  color: var(--input-wrong-color);
+}
