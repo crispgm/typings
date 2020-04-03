@@ -110,10 +110,6 @@ a:hover {
   color: var(--input-prepare-color);
 }
 
-.typing-text-highlight {
-  color: var(--input-highlight-color);
-}
-
 .typing-text-correct {
   color: var(--input-correct-color);
 }

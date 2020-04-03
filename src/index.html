@@ -19,7 +19,7 @@
                 <div class="text-input" v-html="renderedText"></div>
             </div>
             <div class="typing">
-                <input type="text" class="text-typing" v-model="curTyping" />
+                <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
                 <button class="text-redo">Redo</button>
             </div>
         </div>
@@ -77,7 +77,8 @@
                 } else {
                     if (curWord.indexOf(this.curTyping) == -1) {
                         this.curError = true;
-                        console.log('error');
+                    } else {
+                        this.curError = false;
                     }
                 }
             }
