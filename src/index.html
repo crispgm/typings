@@ -10,18 +10,11 @@
 <body>
     <div id="app">
         <div class="wrapper">
-            <div class="title">
-                typings (beta)
-            </div>
             <div class="main">
                 <div class="text-selector">
-                    <div class="text-meter">WPM: {{ wpm }} ACC: {{ acc }}</div>
-                    <div class="text-count">
-                        <a href="#" @click="chooseCount(10)" @class="chooseActive">10</a> /
-                        <a href="#" @click="chooseCount(30)" @class="chooseActive">30</a> /
-                        <a href="#" @click="chooseCount(50)" @class="chooseActive">50</a> /
-                        <a href="#" @click="chooseCount(100)" @class="chooseActive">100</a> /
-                        <a href="#" @click="chooseCount(200)" @class="chooseActive">200</a>
+                    <div class="text-meter">wpm: {{ wpm }}, acc: {{ acc }}</div>
+                    <div class="text-title">
+                        typings (beta)
                     </div>
                 </div>
                 <div class="text-main">

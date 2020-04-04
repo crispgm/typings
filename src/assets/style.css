@@ -1,5 +1,5 @@
-/* @import url("/themes/gmk-shoko.css"); */
-@import url("/themes/nord.css");
+@import url("/themes/gmk-shoko.css");
+/* @import url("/themes/nord.css"); */
 
 * {
   box-sizing: border-box;
@@ -47,29 +47,19 @@ a:hover {
   width: 36rem;
 }
 
-.title {
-  font-size: 2rem;
-  margin: 2rem 0;
-  transform: translateY(30vh);
-}
-
 .main {
   margin: 1rem 1rem 1rem 0;
   text-align: left;
   width: 100%;
-  transform: translateY(50vh);
+  transform: translateY(48vh);
 }
 
 .text-selector {
   margin: 0 0 0.8rem;
 }
 
-.text-count {
-  color: var(--count-color);
-}
-
-.text-count-active {
-  text-decoration: underline;
+.text-title {
+  color: var(--title-color);
 }
 
 .text-meter {
@@ -119,7 +109,7 @@ a:hover {
 }
 
 .typing-text-normal {
-  color: var(--input-color);
+  color: var(--text-color);
 }
 
 .typing-text-prepare {
@@ -139,4 +129,9 @@ a:hover {
   padding: 1rem 0;
   position: fixed;
   width: 100%;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
 }
