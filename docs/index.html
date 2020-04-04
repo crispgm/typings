@@ -60,6 +60,10 @@
                 const curChar = val[val.length-1];
                 const curWord = this.richTexts[this.curIndex].text;
                 if (this.isPunctuation(curChar)) {
+                    if (oldVal == '') {
+                        this.curTyping = '';
+                        return;
+                    }
                     if (curWord == this.curTyping.substr(0, this.curTyping.length-1)) {
                         this.typingCorrectCount++;
                         this.richTexts[this.curIndex].klass = 'typing-text-correct';
