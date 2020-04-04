@@ -109,6 +109,10 @@ a:hover {
   padding: 0.4rem;
 }
 
+a.text-restart:hover {
+  text-decoration: none;
+}
+
 .typing-text-normal {
   color: var(--text-color);
 }

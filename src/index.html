@@ -20,7 +20,7 @@
                 <div class="text-main">
                     <div class="text-display" v-html="renderedText"></div>
                     <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
-                    <button class="text-restart">Restart</button>
+                    <a href="#" class="text-restart" @click="restart">Restart</a>
                 </div>
             </div>
         </div>
@@ -64,7 +64,6 @@
                         this.curTyping = '';
                         return;
                     }
-
                     if (curWord == this.curTyping.substr(0, this.curTyping.length-1)) {
                         this.typingCorrectCount++;
                         this.richTexts[this.curIndex].klass = 'typing-text-correct';
@@ -94,17 +93,6 @@
             }
         },
         created: function() {
-            const texts = this.originalText.split(' ');
-            for (const [index, text] of Object.entries(texts)) {
-                let klass = 'typing-text-normal';
-                if (index == 0) {
-                    klass = 'typing-text-prepare';
-                }
-                this.richTexts.push({
-                    text,
-                    klass
-                });
-            }
             this.init();
         },
         computed: {
@@ -116,6 +104,8 @@
         },
         methods: {
             init: function() {
+                this.richTexts = [];
+                this.loadTexts();
                 this.wpm = 'xxx';
                 this.acc = 'xxx';
                 this.curTyping = '';
@@ -125,6 +115,19 @@
                 this.typingStart = null;
                 this.typingEnd = null;
                 this.render();
+            },
+            loadTexts: function() {
+                const texts = this.originalText.split(' ');
+                for (const [index, text] of Object.entries(texts)) {
+                    let klass = 'typing-text-normal';
+                    if (index == 0) {
+                        klass = 'typing-text-prepare';
+                    }
+                    this.richTexts.push({
+                        text,
+                        klass
+                    });
+                }
             },
             render: function() {
                 let html = '';
@@ -141,8 +144,8 @@
                     return false;
                 }
             },
-            chooseCount: function(cnt) {
-                this.countChoice = cnt;
+            restart: function() {
+                this.init();
             }
         }
     })
