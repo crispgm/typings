@@ -50,6 +50,7 @@ a:hover {
 .title {
   font-size: 2rem;
   margin: 2rem 0;
+  transform: translateY(30vh);
 }
 
 .main {
@@ -131,4 +132,11 @@ a:hover {
 
 .typing-text-wrong {
   color: var(--input-wrong-color);
+}
+
+.footer {
+  bottom: 0;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
 }
