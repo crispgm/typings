@@ -1,0 +1,138 @@
+/* @import url("/themes/gmk-shoko.css"); */
+/* @import url("/themes/nord.css"); */
+@import url("/themes/gmk-botanical.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 40rem) {
+  html {
+    font-size: 14px;
+  }
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-family: "Fira Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0;
+  width: 36rem;
+}
+
+.main {
+  margin: 1rem 1rem 1rem 0;
+  text-align: left;
+  width: 100%;
+  transform: translateY(48vh);
+}
+
+.text-selector {
+  margin: 0 0 0.8rem;
+}
+
+.text-title {
+  color: var(--title-color);
+}
+
+.text-meter {
+  color: var(--meter-color);
+  float: right;
+}
+
+.text-main {
+  border-radius: 8px;
+  border: 0;
+  color: var(--text-color);
+  background-color: var(--text-bg-color);
+  font-size: 1rem;
+  padding: 1.2rem 1rem;
+  width: 100%;
+}
+
+.text-display {
+  border-radius: 8px;
+  line-height: 1.4rem;
+  margin: 0 0 1rem;
+  word-spacing: 4px;
+}
+
+.text-typing {
+  color: var(--input-color);
+  background-color: var(--input-bg-color);
+  border: 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: "Fira Sans";
+  line-height: 1rem;
+  margin: 0 0.2rem 0 0;
+  padding: 0.4rem 0.8rem;
+  width: 28.4rem;
+}
+
+.text-restart {
+  color: var(--button-color);
+  background-color: var(--button-bg-color);
+  border: 0;
+  border-radius: 4px;
+  font-family: "Fira Sans";
+  font-size: 1rem;
+  line-height: 1.2rem;
+  padding: 0.4rem;
+}
+
+.typing-text-normal {
+  color: var(--text-color);
+}
+
+.typing-text-prepare {
+  color: var(--input-prepare-color);
+}
+
+.typing-text-correct {
+  color: var(--input-correct-color);
+}
+
+.typing-text-wrong {
+  color: var(--input-wrong-color);
+}
+
+.footer {
+  bottom: 0;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
