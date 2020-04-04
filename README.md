@@ -1,2 +1,3 @@
 # typings
-Modern typing test for coding inspired by typings.gg
+
+Modern typing test inspired by typings.gg.

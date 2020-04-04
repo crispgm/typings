@@ -53,33 +53,44 @@ a:hover {
 }
 
 .main {
-  width: 100%;
   margin: 1rem 1rem 1rem 0;
   text-align: left;
-  padding: 0.4rem;
+  width: 100%;
+  transform: translateY(50vh);
 }
 
-.text-input {
-  color: var(--text-color);
-  background-color: var(--input-bg-color);
-  font-size: 1rem;
-  border-radius: 8px;
-  margin: 0.4rem 0 0;
-  padding: 1.2rem 1rem;
-  word-spacing: 4px;
+.text-selector {
+  margin: 0 0 0.8rem;
 }
 
-.text-choose {
-  color: var(--choose-color);
+.text-count {
+  color: var(--count-color);
 }
 
-.text-choose-active {
+.text-count-active {
   text-decoration: underline;
 }
 
 .text-meter {
   color: var(--meter-color);
   float: right;
+}
+
+.text-main {
+  border-radius: 8px;
+  border: 0;
+  color: var(--text-color);
+  background-color: var(--text-bg-color);
+  font-size: 1rem;
+  padding: 1.2rem 1rem;
+  width: 100%;
+}
+
+.text-display {
+  border-radius: 8px;
+  line-height: 1.4rem;
+  margin: 0 0 1rem;
+  word-spacing: 4px;
 }
 
 .text-typing {
@@ -92,17 +103,17 @@ a:hover {
   line-height: 1rem;
   margin: 0 0.2rem 0 0;
   padding: 0.4rem 0.8rem;
-  width: 20rem;
+  width: 28.4rem;
 }
 
-.text-redo {
+.text-restart {
   color: var(--button-color);
   background-color: var(--button-bg-color);
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   font-family: "Fira Sans";
   font-size: 1rem;
-  line-height: 1rem;
+  line-height: 1.2rem;
   padding: 0.4rem;
 }
 

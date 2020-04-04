@@ -2,12 +2,13 @@
 :root {
   --main-bg-color: #2e3440;
   --text-color: #7a99ac;
+  --text-bg-color: #d8dee9;
   --input-color: #4c566a;
   --input-prepare-color: #5e81ac;
   --input-correct-color: #88c0d0;
   --input-wrong-color: #bf616a;
   --input-bg-color: #eceff4;
-  --choose-color: #b48ead;
+  --count-color: #b48ead;
   --meter-color: #8fbcbb;
   --button-color: #eceff4;
   --button-bg-color: #4c566a;

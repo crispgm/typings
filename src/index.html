@@ -14,13 +14,21 @@
                 typings (beta)
             </div>
             <div class="main">
-                <div class="text-meter">WPM: {{ wpm }} ACC: {{ acc }}</div>
-                <div class="text-choose">10 / 30 / 50 / 100 / 200</div>
-                <div class="text-input" v-html="renderedText"></div>
-            </div>
-            <div class="typing">
-                <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
-                <button class="text-redo">Redo</button>
+                <div class="text-selector">
+                    <div class="text-meter">WPM: {{ wpm }} ACC: {{ acc }}</div>
+                    <div class="text-count">
+                        <a href="#" @click="chooseCount(10)" @class="chooseActive">10</a> /
+                        <a href="#" @click="chooseCount(30)" @class="chooseActive">30</a> /
+                        <a href="#" @click="chooseCount(50)" @class="chooseActive">50</a> /
+                        <a href="#" @click="chooseCount(100)" @class="chooseActive">100</a> /
+                        <a href="#" @click="chooseCount(200)" @class="chooseActive">200</a>
+                    </div>
+                </div>
+                <div class="text-main">
+                    <div class="text-display" v-html="renderedText"></div>
+                    <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
+                    <button class="text-restart">Restart</button>
+                </div>
             </div>
         </div>
     </div>
@@ -35,6 +43,7 @@
             richTexts: [],
             wpm: 'xxx',
             acc: 'xxx',
+            countChoice: 30,
             curTyping: '',
             curIndex: 0,
             curError: false,
@@ -97,6 +106,13 @@
             }
             this.init();
         },
+        computed: {
+            chooseActive: function (cnt) {
+                return {
+                    'text-choose-active': this.countChoice == cnt
+                }
+            }
+        },
         methods: {
             init: function() {
                 this.wpm = 'xxx';
@@ -123,6 +139,9 @@
                 default:
                     return false;
                 }
+            },
+            chooseCount: function(cnt) {
+                this.countChoice = cnt;
             }
         }
     })
