@@ -1,5 +1,5 @@
 /* GMK Botanical by Hazzy https://geekhack.org/index.php?topic=102350.0  */
-:root {
+.theme-gmk-botanical {
   --main-bg-color: #dde5ed;
   --title-color: #3e5d58;
   --text-color: #3e5d58;
@@ -7,10 +7,11 @@
   --input-color: #3e5d58;
   --input-prepare-color: #dde5ed;
   --input-correct-color: #dde5ed;
-  --input-wrong-color: #ea99a7;
+  --input-wrong-color: #8d5c4e;
   --input-bg-color: #dde5ed;
   --count-color: #3e5d58;
   --meter-color: #3e5d58;
   --button-color: #dde5ed;
   --button-bg-color: #3e5d58;
+  --utility-color: #3e5d58;
 }

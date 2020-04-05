@@ -1,17 +1,18 @@
 /* GMK Noel https://geekhack.org/index.php?topic=102080.0 */
 /* I couldn't find GMK WS2 yet, use WS1 instead */
-:root {
-  --main-bg-color: rgb(255, 255, 253);
+.theme-gmk-noel {
+  --main-bg-color: #ffffff;
   --title-color: #efb9c0;
-  --text-color: rgb(255, 255, 253);
-  --text-bg-color: #99d6ea;
+  --text-color: #ffffff;
+  --text-bg-color: #5bb9d2;
   --input-color: #3a6468;
   --input-prepare-color: #3a6468;
-  --input-correct-color: #3a6468;
+  --input-correct-color: #ffffff;
   --input-wrong-color: #efb9c0;
-  --input-bg-color: rgb(255, 255, 253);
-  --count-color: #99d6ea;
-  --meter-color: #99d6ea;
-  --button-color: rgb(255, 255, 253);
+  --input-bg-color: #ffffff;
+  --count-color: #5bb9d2;
+  --meter-color: #5bb9d2;
+  --button-color: #ffffff;
   --button-bg-color: #efb9c0;
+  --utility-color: #efb9c0;
 }

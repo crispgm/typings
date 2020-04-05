@@ -1,5 +1,5 @@
 /* GMK Shoko https://geekhack.org/index.php?topic=98202.0 */
-:root {
+.theme-gmk-shoko {
   --main-bg-color: #99d6ea;
   --title-color: #fffffd;
   --text-color: #7a99ac;
@@ -13,4 +13,5 @@
   --meter-color: #fffffd;
   --button-color: #fffffd;
   --button-bg-color: #7a99ac;
+  --utility-color: #7a99ac;
 }

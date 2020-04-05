@@ -1,5 +1,5 @@
 /* Nord https://nordtheme.com/ */
-:root {
+.theme-nord {
   --main-bg-color: #2e3440;
   --title-color: #b48ead;
   --text-color: #7a99ac;
@@ -13,4 +13,5 @@
   --meter-color: #8fbcbb;
   --button-color: #eceff4;
   --button-bg-color: #4c566a;
+  --utility-color: #d8dee9;
 }
