@@ -1,0 +1,12 @@
+{
+  "name": "typings-by-crisp",
+  "version": "1.0.0",
+  "description": "Modern typing test inspired by typings.gg",
+  "main": "index.js",
+  "repository": "git@github.com:crispgm/typings.git",
+  "author": "David Zhang <crispgm@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "sh ./build.sh"
+  }
+}
