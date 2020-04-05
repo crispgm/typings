@@ -1,0 +1,16 @@
+/* default minimal theme by crisp, based on OpenColor */
+.theme-minimal {
+  --main-bg-color: #f8f9fa;
+  --title-color: #212529;
+  --text-color: #495057;
+  --text-bg-color: #adb5bd;
+  --input-color: #495057;
+  --input-prepare-color: #f1f3f5;
+  --input-correct-color: #dee2e6;
+  --input-wrong-color: #ff6b6b;
+  --input-bg-color: #f1f3f5;
+  --count-color: #495057;
+  --meter-color: #495057;
+  --button-color: #495057;
+  --button-bg-color: #f8f9fa;
+}
