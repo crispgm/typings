@@ -1,7 +1,8 @@
-/* @import url("/themes/gmk-shoko.css"); */
+@import url("/themes/minimal.css");
+@import url("/themes/gmk-shoko.css");
 @import url("/themes/nord.css");
-/* @import url("/themes/gmk-botanical.css"); */
-/* @import url("/themes/gmk-noel.css"); */
+@import url("/themes/gmk-botanical.css");
+@import url("/themes/gmk-noel.css");
 
 * {
   box-sizing: border-box;
@@ -20,8 +21,6 @@ html {
 }
 
 body {
-  background-color: var(--main-bg-color);
-  color: var(--text-color);
   font-family: "Fira Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   -moz-osx-font-smoothing: grayscale;
@@ -43,6 +42,21 @@ a:hover {
   text-decoration: underline;
 }
 
+input,
+select {
+  font-family: "Fira Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.theme {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
+
 .wrapper {
   margin: 0 auto;
   padding: 0;
@@ -50,10 +64,11 @@ a:hover {
 }
 
 .main {
+  bottom: 8rem;
   margin: 1rem 1rem 1rem 0;
+  position: fixed;
   text-align: left;
-  width: 100%;
-  transform: translateY(48vh);
+  width: 36rem;
 }
 
 .text-selector {
@@ -104,7 +119,6 @@ a:hover {
   background-color: var(--button-bg-color);
   border: 0;
   border-radius: 4px;
-  font-family: "Fira Sans";
   font-size: 1rem;
   line-height: 1.2rem;
   padding: 0.4rem;
@@ -130,7 +144,23 @@ a.text-restart:hover {
   color: var(--input-wrong-color);
 }
 
+.text-themer {
+  color: var(--utility-color);
+  margin: 3.6rem 0;
+  text-align: center;
+}
+
+.text-themer select {
+  background-color: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--utility-color);
+  font-size: 0.8rem;
+  padding: 0.4rem;
+}
+
 .footer {
+  color: var(--utility-color);
   bottom: 0;
   padding: 1rem 0;
   position: fixed;

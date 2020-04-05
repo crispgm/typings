@@ -1,5 +1,5 @@
 /* GMK Botanical by Hazzy https://geekhack.org/index.php?topic=102350.0  */
-:root {
+.theme-gmk-botanical {
   --main-bg-color: #dde5ed;
   --title-color: #3e5d58;
   --text-color: #3e5d58;
@@ -13,4 +13,5 @@
   --meter-color: #3e5d58;
   --button-color: #dde5ed;
   --button-bg-color: #3e5d58;
+  --utility-color: #3e5d58;
 }

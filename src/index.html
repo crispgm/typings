@@ -9,24 +9,33 @@
 
 <body>
     <div id="app">
-        <div class="wrapper">
-            <div class="main">
-                <div class="text-selector">
-                    <div class="text-meter">wpm: {{ wpm }}, acc: {{ acc }}</div>
-                    <div class="text-title">
-                        typings (beta)
+        <div v-bind:class="themeName">
+            <div class="wrapper">
+                <div class="main">
+                    <div class="text-selector">
+                        <div class="text-meter">wpm: {{ wpm }}, acc: {{ acc }}</div>
+                        <div class="text-title">
+                            typings (beta)
+                        </div>
+                    </div>
+                    <div class="text-main">
+                        <div class="text-display" v-html="renderedText"></div>
+                        <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
+                        <a href="#" class="text-restart" @click="restart">Restart</a>
+                    </div>
+                    <div class="text-themer">
+                        <select v-model="themeSelected" @change="selectTheme($event)">
+                            <option v-for="theme in themes" v-bind:value="theme.value">
+                                {{ theme.name }}
+                            </option>
+                        </select>
                     </div>
                 </div>
-                <div class="text-main">
-                    <div class="text-display" v-html="renderedText"></div>
-                    <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
-                    <a href="#" class="text-restart" @click="restart">Restart</a>
-                </div>
             </div>
+            <footer class="footer">
+                Copyright &copy; <a href="https://crisp.dev"/>David Zhang</a>. <a href="https://github.com/crispgm/typings">View on GitHub</a>.
+            </footer>
         </div>
-        <footer class="footer">
-            Copyright &copy; <a href="https://crisp.dev"/>David Zhang</a>. <a href="https://github.com/crispgm/typings">View on GitHub</a>.
-        </footer>
     </div>
 </body>
 
@@ -34,6 +43,30 @@
     var app = new Vue({
         el: '#app',
         data: {
+            themes: [
+                {
+                    name: 'Minimal',
+                    value: 'minimal'
+                },
+                {
+                    name: 'GMK Shoko',
+                    value: 'gmk-shoko'
+                },
+                {
+                    name: 'GMK Botanical',
+                    value: 'gmk-botanical'
+                },
+                {
+                    name: 'GMK Noel',
+                    value: 'gmk-noel'
+                },
+                {
+                    name: 'Nord',
+                    value: 'nord'
+                }
+            ],
+            themeName: "theme-minimal",
+            themeSelected: 'minimal',
             originalText: 'right world who he on by course without around both so need he just man real end so even these such they may between we in it seem line of back might first to stand become like same little eye way on both by go not early other without feel',
             renderedText: '',
             richTexts: [],
@@ -94,20 +127,14 @@
         },
         created: function() {
             this.init();
-        },
-        computed: {
-            chooseActive: function (cnt) {
-                return {
-                    'text-choose-active': this.countChoice == cnt
-                }
-            }
+            this.loadTheme();
         },
         methods: {
             init: function() {
                 this.richTexts = [];
                 this.loadTexts();
-                this.wpm = 'xxx';
-                this.acc = 'xxx';
+                this.wpm = '---';
+                this.acc = '---';
                 this.curTyping = '';
                 this.curIndex = 0;
                 this.typingCorrectCount = 0;
@@ -136,6 +163,24 @@
                     html += `<span class="${rt.klass}">${rt.text}</span> `;
                 }
                 this.renderedText = html;
+            },
+            loadTheme: function() {
+                const theme = window.localStorage.getItem('theme');
+                if (!theme) {
+                    theme = 'minimal';
+                }
+                this.themeName = this.getThemeClass(theme);
+            },
+            selectTheme: function(event) {
+                const themeName = this.getThemeClass(this.themeSelected);
+                if (this.themeName == themeName) {
+                    return;
+                }
+                this.themeName = themeName;
+                window.localStorage.setItem('theme', this.themeSelected);
+            },
+            getThemeClass: function(name) {
+                return `theme theme-${name}`;
             },
             isPunctuation: function(c) {
                 switch (c) {

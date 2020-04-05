@@ -1,6 +1,6 @@
 /* GMK Noel https://geekhack.org/index.php?topic=102080.0 */
 /* I couldn't find GMK WS2 yet, use WS1 instead */
-:root {
+.theme-gmk-noel {
   --main-bg-color: #dedfe1;
   --title-color: #efb9c0;
   --text-color: #dedfe1;
@@ -14,4 +14,5 @@
   --meter-color: #5bb9d2;
   --button-color: #5bb9d2;
   --button-bg-color: #efb9c0;
+  --utility-color: #efb9c0;
 }
