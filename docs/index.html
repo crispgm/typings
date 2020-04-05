@@ -118,6 +118,7 @@
             },
             loadTexts: function() {
                 const texts = this.originalText.split(' ');
+                this.shuffle(texts);
                 for (const [index, text] of Object.entries(texts)) {
                     let klass = 'typing-text-normal';
                     if (index == 0) {
@@ -146,6 +147,14 @@
             },
             restart: function() {
                 this.init();
+            },
+            shuffle: function(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * i);
+                    const temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
             }
         }
     })
