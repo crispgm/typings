@@ -20,7 +20,7 @@
                     </div>
                     <div class="text-main">
                         <div class="text-display" v-html="renderedText"></div>
-                        <input type="text" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
+                        <input type="text" ref="typing" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
                         <a href="#" class="text-restart" @click="restart">Restart</a>
                     </div>
                     <div class="text-themer">
@@ -133,6 +133,9 @@
             this.init();
             this.loadTheme();
         },
+        mounted: function() {
+            this.$refs.typing.focus();
+        },
         methods: {
             init: function() {
                 this.richTexts = [];
@@ -196,6 +199,7 @@
             },
             restart: function() {
                 this.init();
+                this.$refs.typing.focus();
             },
             shuffle: function(array) {
                 for (let i = array.length - 1; i > 0; i--) {
