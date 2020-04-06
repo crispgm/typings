@@ -1,6 +1,16 @@
 # typings
 
-Modern typing test inspired by typings.gg, made with Vue.js.
+Modern typing test inspired by [typings.gg](https://typings.gg).
+
+## Compatibility
+
+Typings is made with Vue.js and latest browser features (e.g. LocalStorage, fetch API, async/await, etc.), which compats only up-to-date browers.
+
+I test it under:
+
+- Google Chrome 80
+- Microsoft Edge 44
+- Mozilla Firefox
 
 ## Development
 
