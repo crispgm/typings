@@ -45,6 +45,8 @@ var app = new Vue({
     typingStart: null,
     typingEnd: null,
     finished: false,
+    logs: [],
+    logOutput: "",
   },
   watch: {
     curTyping: function (val, oldVal) {
@@ -53,7 +55,9 @@ var app = new Vue({
       }
       if (this.typingStart == null) {
         this.typingStart = Date.now();
+        this.pushLog("Typing started...");
       }
+      const logOutput = this.$refs.logging;
       const curChar = val[val.length - 1];
       const curWord = this.richTexts[this.curIndex].text;
       if (this.isPunctuation(curChar)) {
@@ -64,8 +68,10 @@ var app = new Vue({
         if (curWord == this.curTyping.substr(0, this.curTyping.length - 1)) {
           this.typingCorrectCount++;
           this.richTexts[this.curIndex].klass = "typing-text-correct";
+          this.pushLog(`Word [${curWord}] is CORRECT`);
         } else {
           this.richTexts[this.curIndex].klass = "typing-text-wrong";
+          this.pushLog(`Word [${curWord}] is WRONG`);
         }
         this.typingCount++;
         this.acc = ((this.typingCorrectCount / this.typingCount) * 100).toFixed(
@@ -79,6 +85,14 @@ var app = new Vue({
           this.richTexts[this.curIndex + 1].klass = "typing-text-prepare";
         } else {
           this.finished = true;
+          this.pushLog("========");
+          this.pushLog("Congratulations!");
+          this.pushLog(
+            `Finished: wpm is ${this.wpm}, acc is ${this.acc}% [${this.typingCorrectCount}/${this.typingCount}].`
+          );
+          setTimeout(function () {
+            logOutput.scrollTop = logOutput.scrollHeight;
+          }, 100);
         }
 
         this.curIndex++;
@@ -92,18 +106,35 @@ var app = new Vue({
           this.curError = false;
         }
       }
+
+      if (logOutput) {
+        logOutput.scrollTop = logOutput.scrollHeight;
+      }
     },
   },
   created: async function () {
+    this.pushLog("Initializing variables...");
     this.initVars();
+    this.pushLog("Loading theme and word count...");
     this.loadTheme();
     this.loadWordCount();
+    this.pushLog("Loading texts...");
     await this.loadTexts();
+    this.pushLog("Building texts...");
     this.buildTexts();
+    this.pushLog("Rendering texts...");
     this.renderText();
   },
   mounted: function () {
     this.$refs.typing.focus();
+
+    window.addEventListener(
+      "keypress",
+      function (e) {
+        const keyName = String.fromCharCode(e.keyCode);
+        this.pushLog(`Key: ${keyName}, KeyCode: ${e.keyCode}`);
+      }.bind(this)
+    );
   },
   methods: {
     initVars: function () {
@@ -158,7 +189,7 @@ var app = new Vue({
       this.renderedText = html;
     },
     loadTheme: function () {
-      const theme = window.localStorage.getItem("theme");
+      let theme = window.localStorage.getItem("theme");
       if (!theme) {
         theme = "minimal";
       }
@@ -170,6 +201,7 @@ var app = new Vue({
       if (this.themeName == themeName) {
         return;
       }
+      this.pushLog(`Selecting theme: ${this.themeSelected}`);
       this.themeName = themeName;
       window.localStorage.setItem("theme", this.themeSelected);
     },
@@ -185,6 +217,8 @@ var app = new Vue({
     },
     selectWordCount: function (event) {
       window.localStorage.setItem("wordCount", this.wcSelected);
+      this.pushLog(`Selecting word count: ${this.wcSelected}`);
+      this.pushLog("Restarting...");
       this.initVars();
       this.buildTexts();
       this.renderText();
@@ -198,10 +232,23 @@ var app = new Vue({
       }
     },
     restart: function () {
+      this.resetLog();
+      this.pushLog("Restarting...");
       this.initVars();
       this.buildTexts();
       this.renderText();
       this.$refs.typing.focus();
+    },
+    pushLog: function (s) {
+      this.logs.push(s);
+      if (this.logs > 5000) {
+        this.logs.splice(0, 2000);
+      }
+      this.logOutput = this.logs.join("\n");
+    },
+    resetLog: function () {
+      this.logs = [];
+      this.logOutput = "";
     },
   },
 });

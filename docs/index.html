@@ -3,7 +3,8 @@
 <head>
     <title>typings</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/modern-normalize@0.6.0/modern-normalize.min.css"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto+Mono" rel="stylesheet">
     <link href="/typings/assets/style.css" rel="stylesheet">
 </head>
 
@@ -25,6 +26,9 @@
                         <div class="text-display" v-html="renderedText"></div>
                         <input type="text" ref="typing" class="text-typing" v-model="curTyping" v-bind:class="[curError ? 'typing-text-wrong' : 'text-typing']" />
                         <a href="#" class="text-restart" @click="restart">Restart</a>
+                        <div ref="logging" class="text-log">
+                          <pre>{{ logOutput }}</pre>
+                        </div>
                     </div>
                     <div class="text-themer">
                         <select v-model="wcSelected" @change="selectWordCount($event)">
