@@ -4,7 +4,13 @@ Modern typing test inspired by typings.gg, made with Vue.js.
 
 ## Development
 
-- Serves the static files with anything you like, even if it is an one line server.
+```shell
+yarn install
+yarn serve
+```
+
+## Deployment
+
 - `docs` is for GitHub Pages publishing. Stable version will be built and placed to here.
 
 ```shell
