@@ -10,9 +10,9 @@
   --input-correct-color: #ffffff;
   --input-wrong-color: #efb9c0;
   --input-bg-color: #ffffff;
-  --count-color: #5bb9d2;
-  --meter-color: #5bb9d2;
+  --count-color: #efb9c0;
+  --meter-color: #efb9c0;
   --button-color: #ffffff;
-  --button-bg-color: #efb9c0;
-  --utility-color: #efb9c0;
+  --button-bg-color: #5bb9d2;
+  --utility-color: #3a6468;
 }
