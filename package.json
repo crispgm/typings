@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "serve": "http-server ./src",
-    "build": "sh ./build.sh"
+    "build": "./scripts/build.sh"
   },
-  "dev-dependencies": {
+  "devDependencies": {
     "http-server": "^0.12.1"
   }
 }
