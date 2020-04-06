@@ -177,7 +177,7 @@ var app = new Vue({
       return `theme theme-${name}`;
     },
     loadWordCount: function () {
-      const wordCount = window.localStorage.getItem("wordCount");
+      let wordCount = window.localStorage.getItem("wordCount");
       if (!wordCount) {
         wordCount = 20;
       }
