@@ -27,6 +27,11 @@
                         <a href="#" class="text-restart" @click="restart">Restart</a>
                     </div>
                     <div class="text-themer">
+                        <select v-model="wcSelected" @change="selectWordCount($event)">
+                            <option v-for="wc in wordCounts" v-bind:value="wc">
+                                {{ wc }}
+                            </option>
+                        </select>
                         <select v-model="themeSelected" @change="selectTheme($event)">
                             <option v-for="theme in themes" v-bind:value="theme.value">
                                 {{ theme.name }}

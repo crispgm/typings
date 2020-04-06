@@ -29,6 +29,8 @@ var app = new Vue({
     ],
     themeName: "theme-minimal",
     themeSelected: "minimal",
+    wcSelected: 20,
+    wordCounts: [10, 20, 30, 50, 100, 200],
     originalText: "",
     renderedText: "",
     richTexts: [],
@@ -95,6 +97,7 @@ var app = new Vue({
   created: async function () {
     this.initVars();
     this.loadTheme();
+    this.loadWordCount();
     await this.loadTexts();
     this.buildTexts();
     this.renderText();
@@ -131,7 +134,11 @@ var app = new Vue({
     buildTexts: function () {
       const texts = this.originalText.split(" ");
       this.shuffle(texts);
-      const slicedTexts = texts.slice(0, 20);
+      let wordCount = 20;
+      if (this.wcSelected) {
+        wordCount = this.wcSelected;
+      }
+      const slicedTexts = texts.slice(0, wordCount);
       for (const [index, text] of Object.entries(slicedTexts)) {
         let klass = "typing-text-normal";
         if (index == 0) {
@@ -168,6 +175,19 @@ var app = new Vue({
     },
     getThemeClass: function (name) {
       return `theme theme-${name}`;
+    },
+    loadWordCount: function () {
+      const wordCount = window.localStorage.getItem("wordCount");
+      if (!wordCount) {
+        wordCount = 20;
+      }
+      this.wcSelected = wordCount;
+    },
+    selectWordCount: function (event) {
+      window.localStorage.setItem("wordCount", this.wcSelected);
+      this.initVars();
+      this.buildTexts();
+      this.renderText();
     },
     isPunctuation: function (c) {
       switch (c) {
