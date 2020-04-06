@@ -60,7 +60,7 @@ select {
 }
 
 .main {
-  bottom: 8rem;
+  bottom: 2rem;
   margin: 1rem 1rem 1rem 0;
   position: fixed;
   text-align: left;
@@ -106,13 +106,13 @@ select {
   color: var(--input-color);
   background-color: var(--input-bg-color);
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 1rem;
   font-family: "Fira Sans";
   line-height: 1rem;
   margin: 0 0.2rem 0 0;
   padding: 0.4rem 0.8rem;
-  width: 28.4rem;
+  width: 29.6rem;
 }
 
 .text-restart {
@@ -153,11 +153,11 @@ a.text-restart:hover {
 .text-themer select {
   cursor: pointer;
   background-color: transparent;
-  border: 0;
-  border-radius: 6px;
+  border: 1px solid var(--utility-color);
+  border-radius: 4px;
   color: var(--utility-color);
   font-size: 0.8rem;
-  padding: 0.4rem;
+  padding: 0.1rem 0.2rem;
 }
 
 .footer {
@@ -171,4 +171,27 @@ a.text-restart:hover {
 textarea:focus,
 input:focus {
   outline: none;
+}
+
+.text-log {
+  color: var(--input-color);
+  background-color: var(--input-bg-color);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  height: 6rem;
+  margin: 1rem 0;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+  padding: 0.4rem 0.8rem;
+}
+
+.text-log::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+pre {
+  font-family: "Roboto Mono";
+  margin: 0;
+  padding: 0;
 }
