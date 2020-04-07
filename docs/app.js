@@ -131,8 +131,13 @@ var app = new Vue({
     window.addEventListener(
       "keypress",
       function (e) {
-        const keyName = String.fromCharCode(e.keyCode);
-        this.pushLog(`Key: ${keyName}, KeyCode: ${e.keyCode}`);
+        const keyName = (function (keyCode) {
+          if (keyCode == 32) {
+            return "SPACE";
+          }
+          return String.fromCharCode(keyCode);
+        })(e.keyCode);
+        this.pushLog(`Key Pressed: <${keyName}>, KeyCode= ${e.keyCode}`);
       }.bind(this)
     );
   },
