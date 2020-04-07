@@ -1,16 +1,15 @@
 /* Nord https://nordtheme.com/ */
 .theme-nord {
   --main-bg-color: #2e3440;
-  --title-color: #b48ead;
-  --text-color: #7a99ac;
+  --title-color: #88c0d0;
+  --text-color: #4c566a;
   --text-bg-color: #d8dee9;
   --input-color: #4c566a;
-  --input-prepare-color: #88c0d0;
+  --input-prepare-color: #5e81ac;
   --input-correct-color: #5e81ac;
-  --input-wrong-color: #bf616a;
+  --input-wrong-color: #b48ead;
   --input-bg-color: #eceff4;
-  --count-color: #b48ead;
-  --meter-color: #8fbcbb;
+  --meter-color: #d8dee9;
   --button-color: #eceff4;
   --button-bg-color: #4c566a;
   --utility-color: #d8dee9;
