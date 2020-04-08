@@ -152,7 +152,7 @@ var app = new Vue({
       this.finished = false;
     },
     loadTexts: async function () {
-      const response = await fetch("/texts/fixtures.json");
+      const response = await fetch("/typings/texts/fixtures.json");
       const texts = await response.json();
       this.originalText = texts.english;
     },
