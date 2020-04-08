@@ -187,10 +187,9 @@ var app = new Vue({
       }
     },
     renderText: function () {
-      let html = "";
-      for (const rt of this.richTexts) {
-        html += `<span class="${rt.klass}">${rt.text}</span> `;
-      }
+      const html = this.richTexts
+        .map((rt) => `<span class="${rt.klass}">${rt.text}</span> `)
+        .join("");
       this.renderedText = html;
     },
     loadTheme: function () {
