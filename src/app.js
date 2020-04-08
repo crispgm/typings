@@ -130,7 +130,9 @@ var app = new Vue({
 
     window.addEventListener("keypress", (e) => {
       const keyName = (function (keyCode) {
-        if (keyCode == 32) {
+        if (keyCode == 13) {
+          return "ENTER";
+        } else if (keyCode == 32) {
           return "SPACE";
         }
         return String.fromCharCode(keyCode);
