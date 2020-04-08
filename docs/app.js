@@ -128,18 +128,15 @@ var app = new Vue({
   mounted: function () {
     this.$refs.typing.focus();
 
-    window.addEventListener(
-      "keypress",
-      function (e) {
-        const keyName = (function (keyCode) {
-          if (keyCode == 32) {
-            return "SPACE";
-          }
-          return String.fromCharCode(keyCode);
-        })(e.keyCode);
-        this.pushLog(`Key Pressed: <${keyName}>, KeyCode= ${e.keyCode}`);
-      }.bind(this)
-    );
+    window.addEventListener("keypress", (e) => {
+      const keyName = (function (keyCode) {
+        if (keyCode == 32) {
+          return "SPACE";
+        }
+        return String.fromCharCode(keyCode);
+      })(e.keyCode);
+      this.pushLog(`Key Pressed: <${keyName}>, KeyCode= ${e.keyCode}`);
+    });
   },
   methods: {
     initVars: function () {
@@ -155,7 +152,7 @@ var app = new Vue({
       this.finished = false;
     },
     loadTexts: async function () {
-      const response = await fetch("/typings/texts/fixtures.json");
+      const response = await fetch("/texts/fixtures.json");
       const texts = await response.json();
       this.originalText = texts.english;
     },
@@ -187,10 +184,9 @@ var app = new Vue({
       }
     },
     renderText: function () {
-      let html = "";
-      for (const rt of this.richTexts) {
-        html += `<span class="${rt.klass}">${rt.text}</span> `;
-      }
+      const html = this.richTexts
+        .map((rt) => `<span class="${rt.klass}">${rt.text}</span> `)
+        .join("");
       this.renderedText = html;
     },
     loadTheme: function () {
