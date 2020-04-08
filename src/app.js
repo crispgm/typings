@@ -128,18 +128,15 @@ var app = new Vue({
   mounted: function () {
     this.$refs.typing.focus();
 
-    window.addEventListener(
-      "keypress",
-      function (e) {
-        const keyName = (function (keyCode) {
-          if (keyCode == 32) {
-            return "SPACE";
-          }
-          return String.fromCharCode(keyCode);
-        })(e.keyCode);
-        this.pushLog(`Key Pressed: <${keyName}>, KeyCode= ${e.keyCode}`);
-      }.bind(this)
-    );
+    window.addEventListener("keypress", (e) => {
+      const keyName = (function (keyCode) {
+        if (keyCode == 32) {
+          return "SPACE";
+        }
+        return String.fromCharCode(keyCode);
+      })(e.keyCode);
+      this.pushLog(`Key Pressed: <${keyName}>, KeyCode= ${e.keyCode}`);
+    });
   },
   methods: {
     initVars: function () {
