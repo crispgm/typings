@@ -45,6 +45,7 @@ var app = new Vue({
     typingStart: null,
     typingEnd: null,
     finished: false,
+    finishedTimes: 0,
     logs: [],
     logOutput: "",
   },
@@ -57,7 +58,6 @@ var app = new Vue({
         this.typingStart = Date.now();
         this.pushLog("Typing started...");
       }
-      const logOutput = this.$refs.logging;
       const curChar = val[val.length - 1];
       const curWord = this.richTexts[this.curIndex].text;
       if (this.isPunctuation(curChar)) {
@@ -85,14 +85,18 @@ var app = new Vue({
           this.richTexts[this.curIndex + 1].klass = "typing-text-prepare";
         } else {
           this.finished = true;
+          this.finishedTimes++;
           this.pushLog("========");
           this.pushLog("Congratulations!");
           this.pushLog(
             `Finished: wpm is ${this.wpm}, acc is ${this.acc}% [${this.typingCorrectCount}/${this.typingCount}].`
           );
-          setTimeout(function () {
-            logOutput.scrollTop = logOutput.scrollHeight;
-          }, 100);
+          this.pushLog(
+            `You have done ${this.formatFinishedTimes(
+              this.finishedTimes
+            )}. Click Restart to continue.\n`
+          );
+          this.saveFinishedTimes();
         }
 
         this.curIndex++;
@@ -106,9 +110,13 @@ var app = new Vue({
           this.curError = false;
         }
       }
-
+    },
+    logOutput: function (val, oldval) {
+      const logOutput = this.$refs.logging;
       if (logOutput) {
-        logOutput.scrollTop = logOutput.scrollHeight;
+        setTimeout(function () {
+          logOutput.scrollTop = logOutput.scrollHeight;
+        }, 50);
       }
     },
   },
@@ -124,6 +132,15 @@ var app = new Vue({
     this.buildTexts();
     this.pushLog("Rendering texts...");
     this.renderText();
+    if (this.finishedTimes == 0) {
+      this.pushLog("Welcome!");
+    } else {
+      this.pushLog(
+        `Welcome back! You have done ${this.formatFinishedTimes(
+          this.finishedTimes
+        )}.`
+      );
+    }
   },
   mounted: function () {
     this.$refs.typing.focus();
@@ -152,6 +169,7 @@ var app = new Vue({
       this.typingStart = null;
       this.typingEnd = null;
       this.finished = false;
+      this.initFinishedTimes();
     },
     loadTexts: async function () {
       const response = await fetch("/typings/texts/fixtures.json");
@@ -190,6 +208,25 @@ var app = new Vue({
         .map((rt) => `<span class="${rt.klass}">${rt.text}</span> `)
         .join("");
       this.renderedText = html;
+    },
+    initFinishedTimes: function () {
+      let finishedTimes = window.localStorage.getItem("finished");
+      if (!finishedTimes && finishedTimes != 0) {
+        finishedTimes = 0;
+      }
+      this.finishedTimes = finishedTimes;
+    },
+    formatFinishedTimes: function (t) {
+      if (t == 1) {
+        return "once";
+      } else if (t == 2) {
+        return "twice";
+      } else {
+        return `${t} times`;
+      }
+    },
+    saveFinishedTimes: function () {
+      window.localStorage.setItem("finished", this.finishedTimes);
     },
     loadTheme: function () {
       let theme = window.localStorage.getItem("theme");
