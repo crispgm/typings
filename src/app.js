@@ -57,7 +57,6 @@ var app = new Vue({
         this.typingStart = Date.now();
         this.pushLog("Typing started...");
       }
-      const logOutput = this.$refs.logging;
       const curChar = val[val.length - 1];
       const curWord = this.richTexts[this.curIndex].text;
       if (this.isPunctuation(curChar)) {
@@ -90,9 +89,7 @@ var app = new Vue({
           this.pushLog(
             `Finished: wpm is ${this.wpm}, acc is ${this.acc}% [${this.typingCorrectCount}/${this.typingCount}].`
           );
-          setTimeout(function () {
-            logOutput.scrollTop = logOutput.scrollHeight;
-          }, 100);
+          this.pushLog("Click Restart to continue.\n");
         }
 
         this.curIndex++;
@@ -106,9 +103,13 @@ var app = new Vue({
           this.curError = false;
         }
       }
-
+    },
+    logOutput: function (val, oldval) {
+      const logOutput = this.$refs.logging;
       if (logOutput) {
-        logOutput.scrollTop = logOutput.scrollHeight;
+        setTimeout(function () {
+          logOutput.scrollTop = logOutput.scrollHeight;
+        }, 50);
       }
     },
   },
