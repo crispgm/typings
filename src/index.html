@@ -31,6 +31,11 @@
                         </div>
                     </div>
                     <div class="text-themer">
+                        <select v-model="langSelected" @change="selectLanguage($event)">
+                            <option v-for="lang in languages" v-bind:value="lang">
+                                {{ lang }}
+                            </option>
+                        </select>
                         <select v-model="wcSelected" @change="selectWordCount($event)">
                             <option v-for="wc in wordCounts" v-bind:value="wc">
                                 {{ wc }}
