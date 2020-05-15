@@ -5,7 +5,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/modern-normalize@0.6.0/modern-normalize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto+Mono" rel="stylesheet">
-    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/typings/assets/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,6 +31,11 @@
                         </div>
                     </div>
                     <div class="text-themer">
+                        <select v-model="langSelected" @change="selectLanguage($event)">
+                            <option v-for="lang in languages" v-bind:value="lang">
+                                {{ lang }}
+                            </option>
+                        </select>
                         <select v-model="wcSelected" @change="selectWordCount($event)">
                             <option v-for="wc in wordCounts" v-bind:value="wc">
                                 {{ wc }}
@@ -51,6 +56,6 @@
     </div>
 </body>
 
-<script type="text/javascript" src="/app.js"></script>
+<script type="text/javascript" src="/typings/app.js"></script>
 
 </html>

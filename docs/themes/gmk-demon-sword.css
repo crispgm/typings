@@ -1,0 +1,16 @@
+/* GMK Demon Sword https://geekhack.org/index.php?topic=104194.0 */
+.theme-gmk-demon-sword {
+  --main-bg-color: #f1ece1;
+  --title-color: #9b2321;
+  --text-color: #f1ece1;
+  --text-bg-color: #0f3052;
+  --input-color: #0f3052;
+  --input-prepare-color: #9b2321;
+  --input-correct-color: #f1ece1;
+  --input-wrong-color: #9b2321;
+  --input-bg-color: #f1ece1;
+  --meter-color: #9b2321;
+  --button-color: #f1ece1;
+  --button-bg-color: #9b2321;
+  --utility-color: #9b2321;
+}

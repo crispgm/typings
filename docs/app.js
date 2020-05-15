@@ -26,11 +26,17 @@ var app = new Vue({
         name: "Nord",
         value: "nord",
       },
+      {
+        name: "GMK Demon Sword",
+        value: "gmk-demon-sword",
+      },
     ],
     themeName: "theme-minimal",
     themeSelected: "minimal",
     wcSelected: 20,
     wordCounts: [10, 20, 30, 50, 100, 200],
+    langSelected: "English",
+    languages: ["English", "Numbers"],
     originalText: "",
     renderedText: "",
     richTexts: [],
@@ -128,10 +134,7 @@ var app = new Vue({
     this.loadWordCount();
     this.pushLog("Loading texts...");
     await this.loadTexts();
-    this.pushLog("Building texts...");
-    this.buildTexts();
-    this.pushLog("Rendering texts...");
-    this.renderText();
+
     if (this.finishedTimes == 0) {
       this.pushLog("Welcome!");
     } else {
@@ -169,12 +172,50 @@ var app = new Vue({
       this.typingStart = null;
       this.typingEnd = null;
       this.finished = false;
+      this.initLanguage();
       this.initFinishedTimes();
     },
     loadTexts: async function () {
-      const response = await fetch("/texts/fixtures.json");
+      this.pushLog("Loading texts...");
+      const response = await fetch("/typings/texts/fixtures.json");
       const texts = await response.json();
-      this.originalText = texts.english;
+      this.originalText = texts[this.langSelected];
+      this.pushLog("Building texts...");
+      this.buildTexts();
+      this.pushLog("Rendering texts...");
+      this.renderText();
+    },
+    initLanguage: function () {
+      let langSelected = window.localStorage.getItem("language");
+      if (!this.languageExists(langSelected)) {
+        this.pushLog(
+          `Error: language ${langSelected} does not exist. Set to English.`
+        );
+        langSelected = "English";
+        window.localStorage.setItem("language", langSelected);
+      }
+      this.langSelected = langSelected;
+    },
+    selectLanguage: async function (event) {
+      if (!this.languageExists(this.langSelected)) {
+        this.pushLog(`Error: language ${langSelected} does not exist.`);
+      }
+      this.pushLog(`Selecting language: ${this.langSelected}`);
+      window.localStorage.setItem("language", this.langSelected);
+      this.richTexts = [];
+      this.renderedText = "";
+      await this.loadTexts();
+    },
+    languageExists: function (lang) {
+      if (!lang) {
+        return false;
+      }
+      for (let l of this.languages) {
+        if (l == lang) {
+          return true;
+        }
+      }
+      return false;
     },
     shuffle: function (array) {
       for (let i = array.length - 1; i > 0; i--) {
