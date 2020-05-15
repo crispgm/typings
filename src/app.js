@@ -26,6 +26,10 @@ var app = new Vue({
         name: "Nord",
         value: "nord",
       },
+      {
+        name: "GMK Demon Sword",
+        value: "gmk-demon-sword",
+      },
     ],
     themeName: "theme-minimal",
     themeSelected: "minimal",
