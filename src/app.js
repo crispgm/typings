@@ -132,7 +132,6 @@ var app = new Vue({
     this.pushLog("Loading theme and word count...");
     this.loadTheme();
     this.loadWordCount();
-    this.pushLog("Loading texts...");
     await this.loadTexts();
 
     if (this.finishedTimes == 0) {
