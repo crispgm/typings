@@ -37,11 +37,12 @@ The English texts are based on [briano1905/typings](https://github.com/briano190
 
 Theme is implemented with CSS variables and saved with JavaScript LocalStorage API.
 
-- Minimal
 - Nord
+- Minimal
 - GMK Shoko
 - GMK Botanical
 - GMK Noel
+- GMK Demon Sword
 
 ## Credit
 
