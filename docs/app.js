@@ -31,12 +31,12 @@ var app = new Vue({
         value: "gmk-demon-sword",
       },
     ],
-    themeName: "theme-minimal",
-    themeSelected: "minimal",
+    themeName: "theme-nord",
+    themeSelected: "nord",
     wcSelected: 20,
     wordCounts: [10, 20, 30, 50, 100, 200],
     langSelected: "English",
-    languages: ["English", "Numbers"],
+    languages: ["English", "Chinese", "Numbers"],
     originalText: "",
     renderedText: "",
     richTexts: [],
@@ -271,7 +271,7 @@ var app = new Vue({
     loadTheme: function () {
       let theme = window.localStorage.getItem("theme");
       if (!theme) {
-        theme = "minimal";
+        theme = "nord";
       }
       this.themeName = this.getThemeClass(theme);
       this.themeSelected = theme;
