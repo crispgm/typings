@@ -8,9 +8,12 @@
   "license": "MIT",
   "scripts": {
     "serve": "http-server ./src",
+    "lint": "eslint --ext .js src",
     "build": "./scripts/build.sh"
   },
   "devDependencies": {
+    "eslint": "^7.3.0",
+    "eslint-plugin-import": "^2.21.2",
     "http-server": "^0.12.1"
   }
 }
