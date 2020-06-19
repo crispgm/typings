@@ -1,6 +1,6 @@
 # typings
 
-Modern typing test inspired by [typings.gg](https://typings.gg).
+Modern typing test built with Vue.
 
 ## Compatibility
 
@@ -42,6 +42,10 @@ Theme is implemented with CSS variables and saved with JavaScript LocalStorage A
 - GMK Shoko
 - GMK Botanical
 - GMK Noel
+
+## Credit
+
+The idea of this typing test app is inspired by [typings.gg](https://typings.gg). English and Chinese texts are also derived from it.
 
 ## License
 
