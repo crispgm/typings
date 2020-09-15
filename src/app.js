@@ -36,7 +36,11 @@ var app = new Vue({
     wcSelected: 20,
     wordCounts: [10, 20, 30, 50, 100, 200],
     langSelected: "English",
-    languages: ["English", "Chinese", "Numbers"],
+    languages: [
+      { name: "English" },
+      { name: "中文", dict: "Chinese" },
+      { name: "Numbers" },
+    ],
     originalText: "",
     renderedText: "",
     richTexts: [],
@@ -178,7 +182,9 @@ var app = new Vue({
       this.pushLog("Loading texts...");
       const response = await fetch("/texts/fixtures.json");
       const texts = await response.json();
-      this.originalText = texts[this.langSelected];
+      const lang = this.getLanguage(this.langSelected);
+      const dictKey = lang.dict || lang.name;
+      this.originalText = texts[dictKey];
       this.pushLog("Building texts...");
       this.buildTexts();
       this.pushLog("Rendering texts...");
@@ -198,6 +204,7 @@ var app = new Vue({
     selectLanguage: async function (event) {
       if (!this.languageExists(this.langSelected)) {
         this.pushLog(`Error: language ${langSelected} does not exist.`);
+        return;
       }
       this.pushLog(`Selecting language: ${this.langSelected}`);
       window.localStorage.setItem("language", this.langSelected);
@@ -205,12 +212,20 @@ var app = new Vue({
       this.renderedText = "";
       await this.loadTexts();
     },
+    getLanguage: function (lang) {
+      for (const l of this.languages) {
+        if (l.name == lang) {
+          return l;
+        }
+      }
+      return null;
+    },
     languageExists: function (lang) {
       if (!lang) {
         return false;
       }
       for (let l of this.languages) {
-        if (l == lang) {
+        if (l.name == lang || l.dict == lang) {
           return true;
         }
       }
